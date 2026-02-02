@@ -47,12 +47,49 @@ After establishing a connection, clients can send and receive data using send() 
 Socket programming finds applications in various domains, including web development, file transfer protocols, online gaming, and real-time communication. It is the foundation for protocols like HTTP, FTP, and SMTP, which power the internet. Socket programming enables the development of both server and client applications, facilitating the exchange of information between devices in a networked environment.
 ## Example Use Cases:
 
-1.	Web servers: Web servers use socket programming to handle incoming HTTP requests from clients, serving web pages and content.
-2.	Chat Application: Instant messaging and chat applications use sockets to enable real-time communication between users.
-3.	File Transfer Protocol: Protocols like FTP (File Transfer Protocol) utilize socket programming for transferring files between a client and a server.
-4.	Networked Games: Online multiplayer games rely on socket programming to facilitate communication between game clients and servers.
-5.	RPC mechanisms: which allow processes to execute code on a remote server, often use socket programming for communication.
+### ALGORITHM
+~~~
+Server side
+# Import socket module 
+import socket             
 
+# Create a socket object 
+s = socket.socket()         
+
+# Define the port on which you want to connect 
+port = 12345                
+
+# connect to the server on local computer 
+s.connect(('127.0.0.1', port)) 
+
+# receive data from the server and decoding to get the string.
+print (s.recv(1024).decode())
+# close the connection 
+s.close()
+~~~
+~~~
+Client side
+import socket             
+# next create a socket object 
+s = socket.socket()         
+print ("Socket successfully created")
+port = 12345                
+s.bind(('', port))         
+print ("socket binded to %s" %(port)) 
+s.listen(5)     
+print ("socket is listening")            
+while True: 
+  c, addr = s.accept()     
+  print ('Got connection from', addr )
+  c.send('Thank you for connecting'.encode()) 
+  # Close the connection with the client 
+c.close()
+~~~
+### OUTPUT 
+Server side 
+<img width="1077" height="261" alt="Screenshot 2026-02-02 142046" src="https://github.com/user-attachments/assets/a8c0600d-d57e-422d-af7b-fee5ae3f4cfb" />
+ Client side 
+ <img width="1097" height="260" alt="Screenshot 2026-02-02 142110" src="https://github.com/user-attachments/assets/2cc567a3-cb00-430a-b982-c53908d84d71" />
 
 ## Result:
 Thus the study of Socket Programming Completed Successfully
